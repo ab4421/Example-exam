@@ -40,6 +40,25 @@ or the program is largely incomplete.
 # Example2: input = "sdfhdsl4??sfasdfga?6sdjkfhbdsjhfkb" output = True (the two numbers sum to 10)
 # weight = 8
 
-def question_mark():
-    return 
+def question_mark(string1):
+    numTotal = 0
+    questionMarkCount = 0
+    digitCount = 0
+    for letter in string1:
+        if letter.isdigit(): 
+            digitCount += 1
+            numTotal += int(letter)
+        elif letter == "?" and digitCount%2 != 0: 
+            questionMarkCount += 1
+    if numTotal == 10 and questionMarkCount == 3: 
+        return "True"
+    else: 
+        return "False"
 
+
+input1 = "sdfhdsl4??sfasdfga?1sdjkfhbdsjhfkb"
+input2 = "sdfhdsl4??sfasdfga?6sdjkfhbdsjhfkb"
+print(question_mark(input1))
+print(question_mark(input2))
+
+print(input1[7].isdigit())
