@@ -34,6 +34,13 @@ or the program is largely incomplete.
 # input dictionary whose values are all whole numbers (values, not keys).
 # # weight = 5 
 
-def value_greatest_even():
-    return 
+def value_greatest_even(dict1):
+    largestValue = 0
+    for value in dict1.values(): 
+        if value > largestValue and value%2 == 0: 
+            largestValue = value
+    return largestValue
 
+myDict = {"First": 123, "Second": 120, "Third": 10 , "Last": 101 }
+
+print(value_greatest_even(myDict))
