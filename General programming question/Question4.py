@@ -40,6 +40,8 @@ or the program is largely incomplete.
 # Example2: input = "sdfhdsl4??sfasdfga?6sdjkfhbdsjhfkb" output = True (the two numbers sum to 10)
 # weight = 8
 
+#generalise
+
 def question_mark(string1):
     numTotal = 0
     questionMarkCount = 0
@@ -55,10 +57,40 @@ def question_mark(string1):
     else: 
         return "False"
 
+def question_mark2(string2):
+    digits = [digit for digit in string2 if digit.isdigit()]
+    trueCount = 0 
+    for place, num in enumerate(digits):
+        try: 
+            if int(num)+int(digits[place+1]) == 10:
+                if string2[string2.index(num):string2.index(digits[place+1])].count("?") == 3:
+                    trueCount += 1
+                    
+        except IndexError:
+            if int(num)+int(digits[place-1]) == 10:
+                if string2[string2.index(digits[place-1]):string2.index(num)].count("?") == 3:
+                    trueCount += 1        
+            else: 
+                return False
+        else: 
+            if trueCount == (len(digits)-1):
+                print(trueCount)
+                return True
+        
+                
+        
+
 
 input1 = "sdfhdsl4??sfasdfga?1sdjkfhbdsjhfkb"
 input2 = "sdfhdsl4??sfasdfga?6sdjkfhbdsjhfkb"
+input3 = "8???2???8"
 print(question_mark(input1))
 print(question_mark(input2))
+print(input1[8:19].count("?"))
+digits = [int(letter) for letter in input1 if letter.isdigit()]
+print(digits)
+print(input1.index("1"))
+print(question_mark2(input1))
+print(question_mark2(input2))
+print(question_mark2(input3))
 
-print(input1[7].isdigit())

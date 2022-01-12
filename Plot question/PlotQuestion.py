@@ -37,3 +37,29 @@ improved (e.g., the students used unnecessary if statements)
 #   data in the 3rd column on the y axis, data in the 1st column on the x axis). 
 # - Add an xlabel as "Time [s]" and a ylabel as "Speed [m/s]"
 #
+from matplotlib import pyplot as plt
+import os
+
+os.chdir("Plot question")
+os.chdir("Data")
+                                                                                                
+with open("data.txt", "r") as f:
+    data = f.read()
+
+dataLines = data.splitlines()
+firstColumn = []
+sixthColumn = []
+thirdColumn = []
+
+for line in range(len(dataLines)): 
+    firstColumn.append(float(dataLines[line].split()[0]))
+    sixthColumn.append(float(dataLines[line].split()[5]))
+    thirdColumn.append(float(dataLines[line].split()[2]))
+
+plt.plot(firstColumn, sixthColumn, color = "c", label = "6th Column")
+plt.plot(firstColumn, thirdColumn, color = "m", label = "3rd Column")
+
+plt.xlabel("Time [s]")
+plt.ylabel("Speed [m/s]")
+plt.legend()
+plt.show()

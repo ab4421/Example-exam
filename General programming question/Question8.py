@@ -46,9 +46,23 @@ or the program is largely incomplete.
 #
 # in which case the function would return True, if the character was "a" and false otherwise.
 # weight = 15
+import numpy as np
+def find_letter(myMat, myChar):
+    for row in range(len(myMat)): 
+        for col in range(len(myMat[row])): 
+            if myMat[row][col] == myChar: 
+                if myMat[row][col+1] == myChar: 
+                    if myMat[row+1][col] == myChar:
+                        if myMat[row+1][col+1] == myChar:
+                            return True
+                        else: 
+                            return False                
 
-def find_letter():
-    return
 
 
+myList = [[1,2,"a","a"], ["a", 3, "a", "a"], [1, 4, 6, 8], [5, 2, 6, 6]]
+myMatrix = np.matrix(myList)
+print(np.matrix(myList))
+print(np.where(myMatrix == "a"))
 
+print(find_letter(myList, "a"))
